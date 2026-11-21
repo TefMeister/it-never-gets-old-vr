@@ -50,6 +50,9 @@ repository keep the name that was current when they were written; the raw logs i
   on Nexus Mods.
 - **Trosski**: the see-through Mod Organizer style our look is built on. **Mod Organizer 2**, **xNVSE**,
   **Wabbajack** and their teams.
+- **momusdigital and the fnvdecomp.com contributors**: [fnv_decomp](https://github.com/momusdigital/fnv_decomp)
+  (CC0), the decompiled New Vegas program we read to understand the game, and
+  [f3_decomp](https://github.com/momusdigital/f3_decomp) (CC0) for comparing with Fallout 3.
 - Fonts: Racing Sans One, Alfa Slab One and the other samples in `tools/fonts/` are under the SIL Open Font License
   (licences beside them).
 
