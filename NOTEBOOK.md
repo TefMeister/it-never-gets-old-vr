@@ -280,3 +280,17 @@ Claim tags: `[verified-live]` seen in the running game, `[measured]` read from f
   strip under "VR!" (word centres at 0.946 of the screen height, the strip's middle at 0.942) `[verified-live
   2026-11-22, n=1]`. So `ROW_Y = 885` stays. My mock-ups drew it higher; the game is the reference, not a mock-up.
   Quit by the menu's own QUIT, game and Mod Organizer closed.
+- **Right on the main menu row: built and proven on the keyboard (`[ID FO-016]`, Tefa: "yes please").** Not the
+  XInputGetState plan: fnv_decomp shows keyboard and pad both end in `HandleGamepadButton` (0x0070F6E0; 1 up, 2 down,
+  3 right, 4 left). `menu-right/ngo_menu_right.cpp`, an xNVSE plugin, re-points the two CALLs that feed it (keyboard
+  0x0070E52C; pad: `GetGamepadInput` at 0x0070F838) at wrappers that turn 3 into 2 only while the lit word's list has
+  `_NeverGetsOldLeft` = 1 (trait id 11095 this run). Each wrapper calls what the CALL pointed at before (TTWVR's entry
+  detour of 0x0070F6E0 still runs). Addresses read on a Steamless-unpacked copy of the Steam exe (the Steam exe's code is
+  scrambled on disk; the copy is in `D:\claude video game stuff\unpacked\fnv\`, reading only). Installed in
+  `Bridge - It Never Gets Old main menu layout/NVSE/Plugins/`; the build kept in `D:\claude video game stuff\builds\`.
+  Flat test: both CALLs re-pointed (log); Down, Right, Right, Left lit NEW, LOAD, SETTINGS, LOAD; inside Settings two
+  Rights were left alone (no remap logged) `[verified-live 2026-11-22, n=1]`. The pad route is untested (no pad here):
+  headset row on the board.
+- Settings sub-pages (Controls): Esc and Tab do not go back and the keys only walk the page's own list. Out by the
+  mouse: new `tools/menu_mouse_go.py` (park the game's arrow in the corner, move, look, `--click`). Written into the
+  game's KNOWN.md. Closed by the menu's QUIT, nothing left running.
