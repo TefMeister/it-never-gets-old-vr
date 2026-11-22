@@ -261,3 +261,11 @@ Claim tags: `[verified-live]` seen in the running game, `[measured]` read from f
   down/up walk the row, stick-left should now work through xleft `[inferred]`, and stick-right needs our own small
   hook: FalloutNV.exe's XInputGetState import, on the main menu's top level only, Y := -X (stick right = Down)
   `[inferred, not built]`. A pointer would be all-new work.
+
+## 2026-11-22
+
+- **Menu picture swapped, "for now" (Tefa):** "modlist it never gets old.png" from the MEGA transfer folder, used as
+  given (no mood), into `Bridge - It Never Gets Old main menu` via `menu_picture.py` (1672 x 941 -> 1920 x 1080, whole,
+  no crop). The old file is kept beside it in `_backup/main_background-2026-11-21.dds.bak`. Not yet seen in the game.
+  The picture's own "IN VR!" runs down to about y 1000, so the menu row at `ROW_Y = 885` sits on those letters
+  `[measured, on the picture only]`: moving the row lower is offered to Tefa.
