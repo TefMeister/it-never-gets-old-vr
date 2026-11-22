@@ -272,3 +272,11 @@ Claim tags: `[verified-live]` seen in the running game, `[measured]` read from f
   menu units (960 high), i.e. about y 996 of 1080, and the row (about 976-1016) sits in the ground strip under the
   letters, which end about y 960 `[measured, on the picture only]`. No move needed; the strip is the bright horizon,
   so how well the words read is the thing to look at in the game.
+- **Pixel look, "nr 1 for now" (Tefa; expected to change while the list is built):** the menu picture is now
+  tw-vivid + 4-pixel retro squares (`picture_mood.py --mood tw-vivid --pixel 4`, new option; output identical to the
+  picked sample). The vintage one without pixels is kept as `_backup/main_background-2026-11-22-vintage.dds.bak`.
+  Tefa kept the dimmed unpicked words as they are and the made worn font.
+- **Seen in the game (flat, Tefa: "all yours"):** the picture shows, pixelated; the row sits in the middle of the
+  strip under "VR!" (word centres at 0.946 of the screen height, the strip's middle at 0.942) `[verified-live
+  2026-11-22, n=1]`. So `ROW_Y = 885` stays. My mock-ups drew it higher; the game is the reference, not a mock-up.
+  Quit by the menu's own QUIT, game and Mod Organizer closed.

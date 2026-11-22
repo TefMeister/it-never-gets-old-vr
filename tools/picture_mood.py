@@ -3,6 +3,7 @@
 
     python picture_mood.py <in.png> <out.png> --mood <name> [--seed 1955]
     python picture_mood.py <in.png> <out folder> --all        (every mood, numbered, for Tefa to pick)
+    add --pixel 4 for the retro pixel look (the menu picture since 2026-11-22: tw-vivid + --pixel 4)
 
 Moods (Tefa 2026-11-20, from the poster tries):
   tw-vivid    Two Wastelands, vivid: Fallout 3 green in the shadows, New Vegas amber in the light, colour kept,
@@ -112,10 +113,23 @@ def mood(img, name, rng):
 MOODS = ["tw-vivid", "tw-dark", "fo3-green", "bleak"]
 
 
-def run(src, dst, name, seed):
+MENU_SIZE = (1920, 1080)   # the game's menu picture size; --pixel works at this size so a block is that many screen pixels
+
+
+def pixelate(im, block):
+    """Retro pixel look (Tefa 2026-11-22, "nr 1" = block 4): average each block x block square, then blow it back up hard-edged."""
+    im = im.resize(MENU_SIZE, Image.LANCZOS)
+    small = im.resize((MENU_SIZE[0] // block, MENU_SIZE[1] // block), Image.BOX)
+    return small.resize(MENU_SIZE, Image.NEAREST)
+
+
+def run(src, dst, name, seed, pixel=0):
     img = np.asarray(Image.open(src).convert("RGB")).astype(np.float32) / 255
     out = np.clip(mood(img, name, np.random.default_rng(seed)), 0, 1)
-    Image.fromarray((out * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.3)).save(dst)
+    pic = Image.fromarray((out * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(0.3))
+    if pixel > 1:
+        pic = pixelate(pic, pixel)
+    pic.save(dst)
     print("written:", dst)
 
 
@@ -126,13 +140,14 @@ def main():
     ap.add_argument("--mood", choices=MOODS)
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--seed", type=int, default=1955)
+    ap.add_argument("--pixel", type=int, default=0, help="retro pixel squares this many screen pixels wide (4 = Tefa's pick)")
     a = ap.parse_args()
     if a.all:
         os.makedirs(a.dst, exist_ok=True)
         for i, m in enumerate(MOODS, 1):
-            run(a.src, os.path.join(a.dst, f"{i} {m}.png"), m, a.seed)
+            run(a.src, os.path.join(a.dst, f"{i} {m}.png"), m, a.seed, a.pixel)
     else:
-        run(a.src, a.dst, a.mood, a.seed)
+        run(a.src, a.dst, a.mood, a.seed, a.pixel)
 
 
 if __name__ == "__main__":
