@@ -264,8 +264,11 @@ Claim tags: `[verified-live]` seen in the running game, `[measured]` read from f
 
 ## 2026-11-22
 
-- **Menu picture swapped, "for now" (Tefa):** "modlist it never gets old.png" from the MEGA transfer folder, used as
-  given (no mood), into `Bridge - It Never Gets Old main menu` via `menu_picture.py` (1672 x 941 -> 1920 x 1080, whole,
-  no crop). The old file is kept beside it in `_backup/main_background-2026-11-21.dds.bak`. Not yet seen in the game.
-  The picture's own "IN VR!" runs down to about y 1000, so the menu row at `ROW_Y = 885` sits on those letters
-  `[measured, on the picture only]`: moving the row lower is offered to Tefa.
+- **Menu picture swapped (Tefa):** "modlist it never gets old.png" from the MEGA transfer folder (Tefa had the words
+  raised so the menu row fits under them) through `picture_mood.py` mood 1 tw-vivid ("make it look vintage again"),
+  then `menu_picture.py` into `Bridge - It Never Gets Old main menu` (1672 x 941 -> 1920 x 1080, whole, no crop). The
+  old file is kept in that mod's `_backup/main_background-2026-11-21.dds.bak`. Not yet seen in the game.
+- Corrected the same morning: an earlier line here said the row (`ROW_Y = 885`) lands on "IN VR!". Wrong: 885 is in
+  menu units (960 high), i.e. about y 996 of 1080, and the row (about 976-1016) sits in the ground strip under the
+  letters, which end about y 960 `[measured, on the picture only]`. No move needed; the strip is the bright horizon,
+  so how well the words read is the thing to look at in the game.
