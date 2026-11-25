@@ -24,3 +24,7 @@ promptly.
 
 - **df4l**, FNVVR Reborn (release notes v0.18.0 to v0.20.0) — https://github.com/df4l/FNVVR
 - **Matthew Adams**, KeenGamer, news of TTWVR's release (2026-11-18) — https://www.keengamer.com/articles/news/the-fallout-a-tale-of-two-realities-vr-mod-for-the-fallout-game-is-out-now/
+
+## Sources (2026-11-25)
+
+- **df4l**, FNVVR Reborn releases v0.21.0 and v1.0.0 — https://github.com/df4l/FNVVR/releases
